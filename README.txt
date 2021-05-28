@@ -1,0 +1,2 @@
+This is a repository for my own project. This is going to be some kind of game that you have to click on the screen
+and this is going to split the screen for 2 parts, then for 4 then for 8 etc. Could be fun! 
