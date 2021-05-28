@@ -5,13 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spliterio</title>
 </head>
+
+<style>
+    #container
+    {
+        width: 1000px;
+        height: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .halfWidth
+    {
+        height: 100%;
+        width: 50%;
+        float: left;
+    }
+</style>
 <body>  
-    <div style="width: 100px; height: 100px; background-color: red;">
-        <button onclick="flip()" style="width: 100%; height: 100%; background-color: blue;"></button>
+    <div id="container">
+        <div id="firstDiv">
+            <button onclick="flip()" style="width: 100%; height: 100%; background-color: black;"></button>
+        </div>
     </div>
 
     <script>
-        
+        function flip(){
+            document.getElementById("container").innerHTML="";
+            for(let i = 0; i < 2; i++)
+            {
+                var div = document.createElement('div');
+                div.className = "halfWidth";
+                div.innerHTML = '<button onclick="flip()" style="width: 100%; height: 100%; background-color: black;"></button>';
+                document.getElementById("container").appendChild(div);
+            }
+        }
     </script>
 </body>
 </html>
