@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    #gameBoard
+    {
+        width: 800px;
+        height: 400px;
+        margin-right: auto;
+        margin-left: auto;
+        background-color: green;
+    }
+    .tankBlock
+    {
+        width: 198px;
+        height: 100px;
+        background-color: red;
+        float: left;
+        border: 1px solid black;
+    }
+    #controlBoard
+    {
+        margin-top: 20px;
+        width: 400px;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div id="gameBoard">
+
+        <div id="A1" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="A2" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="A3" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="A4" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="B1" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="B2" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="B3" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="B4" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="C1" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="C2" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="C3" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="C4" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="D1" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="D2" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="D3" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="D4" class="tankBlock" moveTank(this.id)>Tank</div>      
+    </div>
+    <div id="controlBoard">
+        <button onclick="moveLeft()" class="controlButton">Left</button>
+        <button onclick="moveRight()" class="controlButton">Right</button>
+        <button onclick="moveForward()" class="controlButton">Forward</button>
+        <button onclick="moveBack()" class="controlButton">Back</button>
+    </div>
+
+<script>
+    let tankPositionX = "D";
+    let tankPositionY = "4";
+
+    function moveTank(moved_id)
+    {
+        return moved_id;
+    }
+    function moveLeft()
+    {
+        if(tankPositionY == 1)
+            {
+                alert("Can't go left!");
+                tankPositionY = 1;
+            }
+            else
+            {
+                document.getElementById(tankPositionX + tankPositionY).innerHTML = "";
+            document.getElementById(tankPositionX + (tankPositionY - 1)).innerHTML = "Tank";
+            tankPositionY = (tankPositionY - 1);
+            }   
+    }
+
+</script>
+
+</body>
+</html>
