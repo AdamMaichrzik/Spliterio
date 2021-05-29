@@ -78,9 +78,53 @@
             else
             {
                 document.getElementById(tankPositionX + tankPositionY).innerHTML = "";
-            document.getElementById(tankPositionX + (tankPositionY - 1)).innerHTML = "Tank";
-            tankPositionY = (tankPositionY - 1);
+                document.getElementById(tankPositionX + (tankPositionY - 1)).innerHTML = "Tank";
+                tankPositionY = (tankPositionY - 1);
             }   
+    }
+    function moveRight()
+    {
+        if(tankPositionY == 4)
+        {
+            alert("Can't go right!");
+            tankPositionY = 4;
+        }
+        else
+        {
+            document.getElementById(tankPositionX + tankPositionY).innerHTML = "";
+            document.getElementById(tankPositionX + (tankPositionY + 1)).innerHTML = "Tank";
+            tankPositionY = (tankPositionY + 1);
+        }
+    }
+
+    function moveForward()
+    {
+        if(tankPositionX == "A")
+        {
+            alert("Can't go forward!");
+            tankPositionX == "A";
+        }
+        else
+        {
+            document.getElementById(tankPositionX + tankPositionY).innerHTML = "";
+            document.getElementById(String.fromCharCode(tankPositionX.charCodeAt(0) - 1) + tankPositionY).innerHTML = "Tank";
+            tankPositionX = String.fromCharCode(tankPositionX.charCodeAt(0) - 1);
+        }
+    }
+
+    function moveBack()
+    {
+        if(tankPositionX == "D")
+        {
+            alert("Can't go back!");
+            tankPositionX == "D";
+        }
+        else
+        {
+            document.getElementById(tankPositionX + tankPositionY).innerHTML = "";
+            document.getElementById(String.fromCharCode(tankPositionX.charCodeAt(0) + 1) + tankPositionY).innerHTML = "Tank";
+            tankPositionX = String.fromCharCode(tankPositionX.charCodeAt(0) + 1);
+        }
     }
 
 </script>
