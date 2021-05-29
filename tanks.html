@@ -27,6 +27,7 @@
     {
         margin-top: 20px;
         width: 400px;
+        height: 200px;
         margin-right: auto;
         margin-left: auto;
         text-align: center;
@@ -54,10 +55,14 @@
         <div id="D4" class="tankBlock" moveTank(this.id)>Tank</div>      
     </div>
     <div id="controlBoard">
+        <div>
+            <button onclick="moveForward()" class="controlButton">Forward</button>
+        </div>
         <button onclick="moveLeft()" class="controlButton">Left</button>
         <button onclick="moveRight()" class="controlButton">Right</button>
-        <button onclick="moveForward()" class="controlButton">Forward</button>
-        <button onclick="moveBack()" class="controlButton">Back</button>
+        <div>
+            <button onclick="moveBack()" class="controlButton">Back</button>
+        </div>
     </div>
 
 <script>
@@ -91,9 +96,18 @@
         }
         else
         {
-            document.getElementById(tankPositionX + tankPositionY).innerHTML = "";
-            document.getElementById(tankPositionX + (tankPositionY + 1)).innerHTML = "Tank";
-            tankPositionY = (tankPositionY + 1);
+            if(document.getElementById(tankPositionX + (tankPositionY+1)).innerHTML == "X")
+            {
+                alert("Can't go there!");
+                document.getElementById(tankPositionX + tankPositionY).innerHTML = "Tank";
+                tankPositionY = tankPositionY;
+            }
+            else
+            {
+                document.getElementById(tankPositionX + tankPositionY).innerHTML = "";
+                document.getElementById(tankPositionX + (tankPositionY + 1)).innerHTML = "Tank";
+                tankPositionY = (tankPositionY + 1);
+            }
         }
     }
 
@@ -144,6 +158,23 @@
             }
         }
     }
+
+    document.onkeydown = function(e) {
+    switch (e.keyCode) {
+        case 37:
+            moveLeft();
+            break;
+        case 38:
+            moveForward();
+            break;
+        case 39:
+            moveRight();
+            break;
+        case 40:
+            moveBack();
+            break;
+    }
+};
 
 </script>
 
