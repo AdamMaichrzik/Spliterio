@@ -9,37 +9,70 @@
 <style>
     #container
     {
-        width: 1000px;
-        height: 1000px;
+        width: 100px;
+        height: 100px;
+        margin-top: 100px;
         margin-left: auto;
         margin-right: auto;
     }
 
-    .halfWidth
+    .oneDiv
     {
-        height: 100%;
-        width: 50%;
+        width: 10px;
+        height: 10px;
+        padding: 1px;
         float: left;
     }
 </style>
 <body>  
     <div id="container">
-        <div id="firstDiv">
-            <button onclick="flip()" style="width: 100%; height: 100%; background-color: black;"></button>
-        </div>
-    </div>
+        <button id="1" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="2" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="3" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="4" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="5" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="6" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="7" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="8" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="9" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="10" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="11" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="12" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="13" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="14" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="15" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="16" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="17" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="18" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="19" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="20" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="21" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="22" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="23" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="24" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="25" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="26" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="27" onclick="bomb()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="28" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="29" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="30" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="31" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="32" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="33" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="34" onclick="click()" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
+        <button id="35" onClick="button_click(this.id)" style="width: 10px; height: 10px; background-color: red;padding: 0px;"></button>
 
-    <script>
-        function flip(){
-            document.getElementById("container").innerHTML="";
-            for(let i = 0; i < 2; i++)
-            {
-                var div = document.createElement('div');
-                div.className = "halfWidth";
-                div.innerHTML = '<button onclick="flip()" style="width: 100%; height: 100%; background-color: black;"></button>';
-                document.getElementById("container").appendChild(div);
-            }
+    </div>
+    
+    <script type="text/javascript">
+    
+        function button_click(click_id)
+        {
+            document.getElementById(click_id).style.display = "none";
         }
+
+
     </script>
+
 </body>
 </html>
