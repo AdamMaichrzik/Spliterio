@@ -31,10 +31,16 @@
         background-color: red;
         border: 0px;
     }
+
+    #title
+    {
+        text-align: center;
+    }
 </style>
 <body> 
     <a href="nextGame.html"> Next game is coming!</a>
-    
+
+    <div id="title"></div>
     <div id="container">
         <button id="1" onClick="button_click(this.id)" class="buttonStyle"></button>
         <button id="2" onClick="button_click(this.id)" class="buttonStyle"></button>
@@ -81,9 +87,10 @@
         {
             document.getElementById(click_id).style.backgroundColor = "white";
         }
-        function bomb_click(click_id)
+        function bomb_click(bomb_id)
         {
-            document.getElementById(click_id).style.backgroundColor = "black";
+            document.getElementById(bomb_id).style.backgroundColor = "black";
+            document.getElementById("title").innerHTML = "GAME OVER" + '<button onClick="window.location.reload();">Refresh Page</button>';
         }
 
     </script>
