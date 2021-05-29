@@ -1,0 +1,171 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car game </title>
+</head>
+
+<style>
+    #mainStreet
+    {
+        width: 500px;
+        height: 500px;
+        background-color: gray;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+    }
+    #rightPart
+    {
+        width: 250px;
+        height: 100%;
+        float: left;
+        background-color: green;
+    }
+    #leftPart
+    {
+        width: 250px;
+        height: 100%;
+        background-color: yellow;
+        float: left;
+    }
+
+    #controlBoard
+    {
+        width: 400px;
+        height: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+        text-align: center;
+        background-color: black;
+    }
+    #car
+    {
+        margin-left: 100px;
+        width: 50px;
+        height: 50px;
+        background-color: red;
+    }
+    .streetPart
+    {
+        width: 250px;
+        height: 100px;
+        background-color: blue;
+    }
+    #obstacle
+    {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div id="mainStreet">
+        <div id="leftPart">
+            <div id="A1" class="streetPart">
+                <div id="obstacle">X</div>
+            </div>
+            <div id="A2" class="streetPart"></div>
+            <div id="A3" class="streetPart"></div>
+            <div id="A4" class="streetPart"></div>
+            <div id="A5" class="streetPart"></div>
+            <div id="A6" class="streetPart">
+                <div id="car">Car</div>
+            </div>
+        </div>
+        <div id="rightPart">
+            <div id="B1" class="streetPart">
+                
+            </div>
+            <div id="B2" class="streetPart"></div>
+            <div id="B3" class="streetPart"></div>
+            <div id="B4" class="streetPart"></div>
+            <div id="B5" class="streetPart"></div>
+            <div id="B6" class="streetPart"></div>
+        </div>
+    </div>
+    <div id="controlBoard">
+        <button onclick="goLeft()">Left</button>
+        <button onclick="goRight()">Right</button>
+        <div>
+            <button onclick="checkCrash()">Start</button>
+        </div>
+    </div>
+    <script>
+        let obstacleLetter = "A";
+        let obstacleNumber = 1;
+        let i = 1;
+        
+        function startGame()
+        {
+            checkCrash();
+            document.getElementById(obstacleLetter + obstacleNumber).innerHTML = "";
+            document.getElementById(obstacleLetter + (obstacleNumber + 1)).innerHTML = '<div id="obstacle">X</div>';
+            obstacleLetter = obstacleLetter;
+            obstacleNumber = obstacleNumber + 1; 
+        }
+
+        function checkCrash()
+        {
+            if(document.getElementById("A5").innerHTML == '<div id="obstacle">X</div>' && document.getElementById("A6").innerHTML == '<div id="car">Car</div>')
+            {
+                alert("Game Over!");
+            }
+            if(document.getElementById("B5").innerHTML == '<div id="obstacle">X</div>' && document.getElementById("B6").innerHTML == '<div id="car">Car</div>')
+            {
+                alert("Game over!!!!");
+            }
+        }
+        function moveObstacle()
+        {
+            for (i; i < 7; i++) 
+            {
+                setTimeout(function timer() {
+                startGame();
+                }, i * 500);
+            }
+        }
+
+        
+        
+
+        function goRight()
+        {
+            if(document.getElementById("A6").innerHTML == '<div id="obstacle">X</div>')
+            {
+                alert("BOOOM");
+            }
+            document.getElementById("A6").innerHTML = "";
+            document.getElementById("B6").innerHTML = '<div id="car">Car</div>';
+        }
+        function goLeft()
+        {
+            if(document.getElementById("A6").innerHTML == '<div id="obstacle">X</div>')
+            {
+                alert("BOOOM");
+            }
+            document.getElementById("B6").innerHTML = "";
+            document.getElementById("A6").innerHTML = '<div id="car">Car</div>';
+        }
+
+        document.onkeydown = function (e)
+        {
+            switch(e.keyCode)
+            {
+                case 37:
+                    goLeft();
+                    break;
+                case 39:
+                    goRight();
+                    break;
+            }
+        }
+
+
+        moveObstacle();
+
+
+    </script>
+</body>
+</html>
