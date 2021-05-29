@@ -42,7 +42,7 @@
         <div id="A4" class="tankBlock" onclick="moveTank(this.id)"></div>    
         <div id="B1" class="tankBlock" onclick="moveTank(this.id)"></div>    
         <div id="B2" class="tankBlock" onclick="moveTank(this.id)"></div>    
-        <div id="B3" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="B3" class="tankBlock" onclick="moveTank(this.id)" style="background-color: black;">X</div>    
         <div id="B4" class="tankBlock" onclick="moveTank(this.id)"></div>    
         <div id="C1" class="tankBlock" onclick="moveTank(this.id)"></div>    
         <div id="C2" class="tankBlock" onclick="moveTank(this.id)"></div>    
@@ -106,9 +106,18 @@
         }
         else
         {
-            document.getElementById(tankPositionX + tankPositionY).innerHTML = "";
-            document.getElementById(String.fromCharCode(tankPositionX.charCodeAt(0) - 1) + tankPositionY).innerHTML = "Tank";
-            tankPositionX = String.fromCharCode(tankPositionX.charCodeAt(0) - 1);
+            if(document.getElementById(String.fromCharCode(tankPositionX.charCodeAt(0) - 1) + tankPositionY).innerHTML == "X")
+            {
+                alert("Can't go there!");
+                document.getElementById(tankPositionX + tankPositionY).innerHTML = "Tank";
+                tankPositionX = tankPositionX;
+            }
+            else
+            {
+                document.getElementById(String.fromCharCode(tankPositionX.charCodeAt(0) - 1) + tankPositionY).innerHTML = "Tank";
+                document.getElementById(tankPositionX + tankPositionY).innerHTML = "";
+                tankPositionX = String.fromCharCode(tankPositionX.charCodeAt(0) - 1);
+            }
         }
     }
 
@@ -121,9 +130,18 @@
         }
         else
         {
-            document.getElementById(tankPositionX + tankPositionY).innerHTML = "";
-            document.getElementById(String.fromCharCode(tankPositionX.charCodeAt(0) + 1) + tankPositionY).innerHTML = "Tank";
-            tankPositionX = String.fromCharCode(tankPositionX.charCodeAt(0) + 1);
+            if(document.getElementById(String.fromCharCode(tankPositionX.charCodeAt(0) + 1) + tankPositionY).innerHTML == "X")
+            {
+                alert("Can't go there!");
+                document.getElementById(tankPositionX + tankPositionY).innerHTML = "Tank";
+                tankPositionX = tankPositionX;
+            }
+            else
+            {
+                document.getElementById(tankPositionX + tankPositionY).innerHTML = "";
+                document.getElementById(String.fromCharCode(tankPositionX.charCodeAt(0) + 1) + tankPositionY).innerHTML = "Tank";
+                tankPositionX = String.fromCharCode(tankPositionX.charCodeAt(0) + 1);
+            }
         }
     }
 
