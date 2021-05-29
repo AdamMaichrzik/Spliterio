@@ -5,8 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Next game!</title>
 </head>
+
+<style>
+    #container
+    {
+        width: 500px;
+        height: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+        background-color: red;
+    }
+
+    .buttonBox
+    {
+        width: 10px;
+        height: 10px;
+    }
+</style>
+
 <body>
     <a href="index.html"> Home page</a>
-    
+    <div id="container">
+        <button id="1" onclick="button_click(this.id)" class="buttonBox"></button>
+    </div>
 </body>
 </html>
