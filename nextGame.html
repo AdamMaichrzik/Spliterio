@@ -10,35 +10,66 @@
     #container
     {
         width: 500px;
-        height: 500px;
+        height: 400px;
         margin-left: auto;
         margin-right: auto;
         margin-top: 50px;
-        background-color: red;
     }
 
     .buttonBox
     {
         width: 10px;
-        height: 10px;
+        height: 15px;
+        background-color: white;
+        border: 1px solid black;
+    }
+
+    .colorPicker
+    {
+        height: 20px;
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
     }
 </style>
 
 <body>
     <a href="index.html"> Home page</a>
-    <button onclick="makeBoard()"></button>
+    <button onclick="makeBoard()"> Make board</button>
+    <button onClick="window.location.reload();">Refresh</button>
+    <div class="colorPicker">
+        Pick color!
+        <button onclick="blueColor()" style="background-color: blue;" ></button>
+        <button onclick="greenColor()" style="background-color: green;" ></button>
+    </div>
     <div id="container">
         
     </div>
 </body>
 
 <script>
+    let color;
+    function blueColor()
+    {
+        color = "blue";
+    }
+
+    function greenColor()
+    {
+        color = "green";
+    }
+
     function makeBoard()
     {
-        for(let i = 0; i <1023; i++)
+        for(let i = 0; i <1015; i++)
         {
             document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<button id='" + i + "' onclick='button_click(this.id)' class='buttonBox'></button>";
         }
+    }
+
+    function button_click(clicked_id)
+    {
+        document.getElementById(clicked_id).style.backgroundColor = color;
     }
 </script>
 
