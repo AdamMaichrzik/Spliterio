@@ -26,8 +26,20 @@
 
 <body>
     <a href="index.html"> Home page</a>
+    <button onclick="makeBoard()"></button>
     <div id="container">
-        <button id="1" onclick="button_click(this.id)" class="buttonBox"></button>
+        
     </div>
 </body>
+
+<script>
+    function makeBoard()
+    {
+        for(let i = 0; i <1023; i++)
+        {
+            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<button id='1' onclick='button_click(this.id)' class='buttonBox'></button>";
+        }
+    }
+</script>
+
 </html>
