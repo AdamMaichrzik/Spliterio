@@ -76,7 +76,7 @@
         </div>
         <div id="rightPart">
             <div id="B1" class="streetPart">
-                
+                <div id="obstacle">X</div>
             </div>
             <div id="B2" class="streetPart"></div>
             <div id="B3" class="streetPart"></div>
@@ -89,16 +89,17 @@
         <button onclick="goLeft()">Left</button>
         <button onclick="goRight()">Right</button>
         <div>
-            <button onclick="checkCrash()">Start</button>
+            <button onclick="nextObstacle()">Start</button>
         </div>
     </div>
     <script>
-        let obstacleLetter = "A";
+
+        let obstacleLetter = "B";
         let obstacleNumber = 1;
         let i = 1;
         
         function startGame()
-        {
+        {   
             checkCrash();
             document.getElementById(obstacleLetter + obstacleNumber).innerHTML = "";
             document.getElementById(obstacleLetter + (obstacleNumber + 1)).innerHTML = '<div id="obstacle">X</div>';
@@ -125,14 +126,11 @@
                 startGame();
                 }, i * 500);
             }
-        }
-
-        
-        
+        }    
 
         function goRight()
         {
-            if(document.getElementById("A6").innerHTML == '<div id="obstacle">X</div>')
+            if(document.getElementById("B6").innerHTML == '<div id="obstacle">X</div>')
             {
                 alert("BOOOM");
             }
@@ -162,9 +160,24 @@
             }
         }
 
+        function nextObstacle()
+        {
+            let randomObstacle = Math.floor(Math.random() * 2) + 1;
+            if(randomObstacle == 1)
+            {
+                document.getElementById("A1").innerHTML == '<div id="obstacle">X</div>';
+                obstacleLetter = "A";
+            }
+            if(randomObstacle == 2)
+            {
+                obstacleLetter = "B";
+            }
+            obstacleNumber = 1;
+            i = 1;
+            moveObstacle();
+        }
 
         moveObstacle();
-
 
     </script>
 </body>
