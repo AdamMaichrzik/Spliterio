@@ -27,7 +27,7 @@
     {
         margin-top: 20px;
         width: 400px;
-        height: 200px;
+        height: 100px;
         margin-right: auto;
         margin-left: auto;
         text-align: center;
@@ -37,21 +37,21 @@
 <body>
     <div id="gameBoard">
 
-        <div id="A1" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="A1" class="tankBlock" onclick="moveTank(this.id)"style="background-color: black;">X</div>    
         <div id="A2" class="tankBlock" onclick="moveTank(this.id)"></div>    
         <div id="A3" class="tankBlock" onclick="moveTank(this.id)"></div>    
         <div id="A4" class="tankBlock" onclick="moveTank(this.id)"></div>    
-        <div id="B1" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="B1" class="tankBlock" onclick="moveTank(this.id)"style="background-color: black;">X</div>    
         <div id="B2" class="tankBlock" onclick="moveTank(this.id)"></div>    
         <div id="B3" class="tankBlock" onclick="moveTank(this.id)" style="background-color: black;">X</div>    
         <div id="B4" class="tankBlock" onclick="moveTank(this.id)"></div>    
-        <div id="C1" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="C1" class="tankBlock" onclick="moveTank(this.id)"style="background-color: black;">X</div>    
         <div id="C2" class="tankBlock" onclick="moveTank(this.id)"></div>    
-        <div id="C3" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="C3" class="tankBlock" onclick="moveTank(this.id)" style="background-color: black;">X</div>    
         <div id="C4" class="tankBlock" onclick="moveTank(this.id)"></div>    
         <div id="D1" class="tankBlock" onclick="moveTank(this.id)"></div>    
         <div id="D2" class="tankBlock" onclick="moveTank(this.id)"></div>    
-        <div id="D3" class="tankBlock" onclick="moveTank(this.id)"></div>    
+        <div id="D3" class="tankBlock" onclick="moveTank(this.id)"style="background-color: black;">X</div>    
         <div id="D4" class="tankBlock" moveTank(this.id)>Tank</div>      
     </div>
     <div id="controlBoard">
@@ -77,14 +77,23 @@
     {
         if(tankPositionY == 1)
             {
-                alert("Can't go left!");
+                alert("YOU WON!!!");
                 tankPositionY = 1;
             }
             else
             {
-                document.getElementById(tankPositionX + tankPositionY).innerHTML = "";
-                document.getElementById(tankPositionX + (tankPositionY - 1)).innerHTML = "Tank";
-                tankPositionY = (tankPositionY - 1);
+                if(document.getElementById(tankPositionX + (tankPositionY - 1)).innerHTML == "X")
+                {
+                    alert("Can't go there!");
+                    document.getElementById(tankPositionX + tankPositionY).innerHTML = "Tank";
+                    tankPositionY = tankPositionY;
+                }
+                else
+                {
+                    document.getElementById(tankPositionX + tankPositionY).innerHTML = "";
+                    document.getElementById(tankPositionX + (tankPositionY - 1)).innerHTML = "Tank";
+                    tankPositionY = (tankPositionY - 1);
+                }
             }   
     }
     function moveRight()
