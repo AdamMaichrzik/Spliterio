@@ -36,10 +36,16 @@
     {
         text-align: center;
     }
+
+    #points
+    {
+        text-align: center;
+        color: yellow;
+    }
 </style>
 <body> 
     <a href="nextGame.html"> Next game is coming!</a>
-
+    <div id="points"></div>
     <div id="title"></div>
     <div id="container">
         <button id="1" onClick="button_click(this.id)" class="buttonStyle"></button>
@@ -82,10 +88,11 @@
     </div>
     
     <script type="text/javascript">
-
+        let points;
         function button_click(click_id)
         {
             document.getElementById(click_id).style.backgroundColor = "white";
+            points++;
         }
         function bomb_click(bomb_id)
         {
