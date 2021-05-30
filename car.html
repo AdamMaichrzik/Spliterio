@@ -15,6 +15,7 @@
         margin-left: auto;
         margin-right: auto;
         margin-top: 10px;
+        float: left;
     }
     #rightPart
     {
@@ -40,6 +41,7 @@
         margin-top: 50px;
         text-align: center;
         background-color: black;
+        clear: both;
     }
     #car
     {
@@ -57,15 +59,33 @@
     #obstacle
     {
         text-align: center;
+        background-color: yellow;
+        height: 100%;
+    }
+    #menu
+    {
+        width: 300px;
+        height: 500px;
+        float: left;
+        background-color: turquoise;
+    }
+    #secondMenu
+    {
+        width: 300px;
+        height: 500px;
+        float: left;
+        background-color: turquoise;
+        text-align: center;
     }
 </style>
 
 <body>
+    <div id="secondMenu">
+        <button onclick="nextObstacle();" style="margin-top: 30px;">START</button>
+    </div>
     <div id="mainStreet">
         <div id="leftPart">
-            <div id="A1" class="streetPart">
-                <div id="obstacle">X</div>
-            </div>
+            <div id="A1" class="streetPart"></div>
             <div id="A2" class="streetPart"></div>
             <div id="A3" class="streetPart"></div>
             <div id="A4" class="streetPart"></div>
@@ -73,38 +93,38 @@
             <div id="A6" class="streetPart">
                 <div id="car">Car</div>
             </div>
+            <div id="A7" class="streetPart"></div>
+
         </div>
         <div id="rightPart">
-            <div id="B1" class="streetPart">
-                <div id="obstacle">X</div>
-            </div>
+            <div id="B1" class="streetPart"></div>
             <div id="B2" class="streetPart"></div>
             <div id="B3" class="streetPart"></div>
             <div id="B4" class="streetPart"></div>
             <div id="B5" class="streetPart"></div>
             <div id="B6" class="streetPart"></div>
+            <div id="B7" class="streetPart"></div>
         </div>
+        
     </div>
-    <div id="controlBoard">
-        <button onclick="goLeft()">Left</button>
-        <button onclick="goRight()">Right</button>
-        <div>
-            <button onclick="nextObstacle()">Start</button>
-        </div>
+    <div id="secondMenu">
+        <div id="points">Points: </div>
     </div>
+    
     <script>
 
         let obstacleLetter = "B";
         let obstacleNumber = 1;
         let i = 1;
         
-        function startGame()
+        function createObstacle()
         {   
             checkCrash();
             document.getElementById(obstacleLetter + obstacleNumber).innerHTML = "";
             document.getElementById(obstacleLetter + (obstacleNumber + 1)).innerHTML = '<div id="obstacle">X</div>';
             obstacleLetter = obstacleLetter;
             obstacleNumber = obstacleNumber + 1; 
+            checkForAgain();
         }
 
         function checkCrash()
@@ -123,7 +143,7 @@
             for (i; i < 7; i++) 
             {
                 setTimeout(function timer() {
-                startGame();
+                createObstacle();
                 }, i * 500);
             }
         }    
@@ -176,9 +196,18 @@
             i = 1;
             moveObstacle();
         }
+        
+        function checkForAgain()
+        {
+            if(document.getElementById("B7").innerHTML == '<div id="obstacle">X</div>' || document.getElementById("A7").innerHTML == '<div id="obstacle">X</div>')
+            {
+                document.getElementById("A7").innerHTML = "";
+                document.getElementById("B7").innerHTML = "";
+                nextObstacle();
+            }
+        }
 
-        moveObstacle();
-
+      
     </script>
 </body>
 </html>
