@@ -142,6 +142,8 @@
         let highScore = document.cookie;
         document.getElementById("highScore").innerHTML = highScore;
         isCrash = new Boolean(false);
+        var audio = new Audio('pointSound.wav');
+
 
         function easy()
         {
@@ -267,12 +269,11 @@
             }
             else if(document.getElementById("B7").innerHTML == '<div id="obstacle">X</div>' || document.getElementById("A7").innerHTML == '<div id="obstacle">X</div>')
             {
-                
                 document.getElementById("A7").innerHTML = "";
                 document.getElementById("B7").innerHTML = "";
-                let audio = new Audio('pointSound.wav');
-                audio.play();
                 points = points + addPoints;
+                audio.play();
+                alert("sound here");
                 nextObstacle();
             }
         }
