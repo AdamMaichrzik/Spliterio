@@ -68,6 +68,7 @@
         height: 500px;
         float: left;
         background-color: turquoise;
+        text-align: center;
     }
     #secondMenu
     {
@@ -80,7 +81,7 @@
 </style>
 
 <body>
-    <div id="secondMenu">
+    <div id="menu">
         Press the right arrow to go right and left to go left to avoid crashing into obstacles.It is as simple as it is. 
         <br><br>
         Press start to start the game! Have fun! :) 
@@ -120,6 +121,8 @@
         <div id="points">Points: </div>
         <br><br><br><br><br>
         <div id="highScore">HIGH SCORE!!!</div> 
+        <br> <br><br><br><br><br><br><br><br>
+        <button onclick="clearCookies()">Clear cookies</button>
     </div>
     
     <script>
@@ -129,7 +132,8 @@
         let difficulty = 1000;
         let points = 0;
         let addPoints = 0;
-        let highScore = 0;
+        let highScore = document.cookie;
+        document.getElementById("highScore").innerHTML = highScore;
         isCrash = new Boolean(false);
 
         function easy()
@@ -223,6 +227,8 @@
         function nextObstacle()
         {
             isCrash = false;
+            obstacleNumber = 1;
+            i = 1;
             let randomObstacle = Math.floor(Math.random() * 2) + 1;
             if(randomObstacle == 1)
             {
@@ -233,8 +239,7 @@
             {
                 obstacleLetter = "B";
             }
-            obstacleNumber = 1;
-            i = 1;
+            
             points = points + addPoints;
             document.getElementById("points").innerHTML = "Points: " + points;
             moveObstacle();
@@ -244,9 +249,14 @@
         {
             if(isCrash == true)
             {
+                if(points > parseInt(document.cookie.split("=")[1]))
+                {
+                    document.cookie = "High score is = " + points;
+                }
                 points = 0;
+                i = 1;
                 document.getElementById("points").innerHTML = "Points: " + points;
-                window.location.reload = (true);
+                location.reload();
             }
             else if(document.getElementById("B7").innerHTML == '<div id="obstacle">X</div>' || document.getElementById("A7").innerHTML == '<div id="obstacle">X</div>')
             {
@@ -255,7 +265,12 @@
                 nextObstacle();
             }
         }
+        
+        function clearCookies()
+        {
+            document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
 
+        }
       
     </script>
 </body>
