@@ -1,2 +1,7 @@
-This is a repository for my own project. This is going to be some kind of game that you have to click on the screen
-and this is going to split the screen for 2 parts, then for 4 then for 8 etc. Could be fun! 
+This is my repository for learning and trying things with JS. 
+Basically I am just having fun here and this is my JS playground.
+
+All game are not at all responsive, I am writing the code on MacBook Pro 13 so for this resolution apps looks fine.
+The most important thing here is JS code not css or html :) 
+
+If you want to play some game feel free to have some fun! 
