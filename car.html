@@ -143,27 +143,32 @@
         document.getElementById("highScore").innerHTML = highScore;
         isCrash = new Boolean(false);
         var audio = new Audio('pointSound.wav');
+        audio.playbackRate = 2;
 
 
         function easy()
         {
             difficulty = 2000;
             addPoints = 10;
+            audio.play();
         }
         function normal()
         {
             difficulty = 1000;
             addPoints = 20;
+            audio.play();
         }
         function hard()
         {
             difficulty = 300;
             addPoints = 60;
+            audio.play();
         }
         function impossible()
         {
             difficulty = 100;
             addPoints = 180;
+            audio.play();
         }
         
         function createObstacle()
@@ -273,7 +278,6 @@
                 document.getElementById("B7").innerHTML = "";
                 points = points + addPoints;
                 audio.play();
-                alert("sound here");
                 nextObstacle();
             }
         }
