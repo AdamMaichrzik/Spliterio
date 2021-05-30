@@ -88,10 +88,10 @@
         <br> <br>
         Difficulties: 
         <br>
-        <button>Easy</button> <br>
-        <button>Normal</button> <br>
-        <button>Hard</button> <br>
-        <button>Super sonic uber impossible don't even look at this!</button>
+        <button onclick="easy();">Easy</button> <br>
+        <button onclick="normal()">Normal</button> <br>
+        <button onclick="hard()">Hard</button> <br>
+        <button onclick="impossible()">Super sonic uber impossible don't even look at this!</button>
     </div>
     <div id="mainStreet">
         <div id="leftPart">
@@ -118,13 +118,40 @@
     </div>
     <div id="secondMenu">
         <div id="points">Points: </div>
+        <br><br><br><br><br>
+        <div id="highScore">HIGH SCORE!!!</div> 
     </div>
     
     <script>
-
         let obstacleLetter = "B";
         let obstacleNumber = 1;
         let i = 1;
+        let difficulty = 1000;
+        let points = 0;
+        let addPoints = 0;
+        let highScore = 0;
+        isCrash = new Boolean(false);
+
+        function easy()
+        {
+            difficulty = 2000;
+            addPoints = 10;
+        }
+        function normal()
+        {
+            difficulty = 1000;
+            addPoints = 20;
+        }
+        function hard()
+        {
+            difficulty = 300;
+            addPoints = 60;
+        }
+        function impossible()
+        {
+            difficulty = 100;
+            addPoints = 180;
+        }
         
         function createObstacle()
         {   
@@ -141,10 +168,12 @@
             if(document.getElementById("A5").innerHTML == '<div id="obstacle">X</div>' && document.getElementById("A6").innerHTML == '<div id="car">Car</div>')
             {
                 alert("Game Over!");
+                isCrash = true;
             }
             if(document.getElementById("B5").innerHTML == '<div id="obstacle">X</div>' && document.getElementById("B6").innerHTML == '<div id="car">Car</div>')
             {
                 alert("Game over!!!!");
+                isCrash = true;
             }
         }
         function moveObstacle()
@@ -153,7 +182,7 @@
             {
                 setTimeout(function timer() {
                 createObstacle();
-                }, i * 500);
+                }, i * difficulty);
             }
         }    
 
@@ -162,6 +191,7 @@
             if(document.getElementById("B6").innerHTML == '<div id="obstacle">X</div>')
             {
                 alert("BOOOM");
+                isCrash = true;
             }
             document.getElementById("A6").innerHTML = "";
             document.getElementById("B6").innerHTML = '<div id="car">Car</div>';
@@ -171,6 +201,7 @@
             if(document.getElementById("A6").innerHTML == '<div id="obstacle">X</div>')
             {
                 alert("BOOOM");
+                isCrash = true;
             }
             document.getElementById("B6").innerHTML = "";
             document.getElementById("A6").innerHTML = '<div id="car">Car</div>';
@@ -191,6 +222,7 @@
 
         function nextObstacle()
         {
+            isCrash = false;
             let randomObstacle = Math.floor(Math.random() * 2) + 1;
             if(randomObstacle == 1)
             {
@@ -203,12 +235,20 @@
             }
             obstacleNumber = 1;
             i = 1;
+            points = points + addPoints;
+            document.getElementById("points").innerHTML = "Points: " + points;
             moveObstacle();
         }
         
         function checkForAgain()
         {
-            if(document.getElementById("B7").innerHTML == '<div id="obstacle">X</div>' || document.getElementById("A7").innerHTML == '<div id="obstacle">X</div>')
+            if(isCrash == true)
+            {
+                points = 0;
+                document.getElementById("points").innerHTML = "Points: " + points;
+                window.location.reload = (true);
+            }
+            else if(document.getElementById("B7").innerHTML == '<div id="obstacle">X</div>' || document.getElementById("A7").innerHTML == '<div id="obstacle">X</div>')
             {
                 document.getElementById("A7").innerHTML = "";
                 document.getElementById("B7").innerHTML = "";
