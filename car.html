@@ -247,9 +247,9 @@
                 obstacleLetter = "B";
             }
             
-            points = points + addPoints;
             document.getElementById("points").innerHTML = "Points: " + points;
             moveObstacle();
+            
         }
         
         function checkForAgain()
@@ -267,8 +267,12 @@
             }
             else if(document.getElementById("B7").innerHTML == '<div id="obstacle">X</div>' || document.getElementById("A7").innerHTML == '<div id="obstacle">X</div>')
             {
+                
                 document.getElementById("A7").innerHTML = "";
                 document.getElementById("B7").innerHTML = "";
+                let audio = new Audio('pointSound.wav');
+                audio.play();
+                points = points + addPoints;
                 nextObstacle();
             }
         }
@@ -276,7 +280,6 @@
         function clearCookies()
         {
             document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
-
         }
       
     </script>
