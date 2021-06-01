@@ -69,14 +69,14 @@
     function carrot()
     {
         canPlant = true;
-        color = "orange";
+        plantName = "carrot.png";
         time = 5;
         givePoints = 1;
     }
     function strawberry()
     {
         canPlant = true;
-        color = "red";
+        plantName = "strawberry.png";
         time = 10;
         givePoints = 5;
     }
@@ -111,14 +111,14 @@
             document.getElementById(plant_id).style.backgroundImage = "url('grass.png')";
         }
         /* You can't plant if something is already planted */
-        else if(document.getElementById(plant_id).innerHTML != "Dirt")
+        else if(document.getElementById(plant_id).innerText != "Dirt")
         {
             alert("You can't plant here!")
         }
         else if(canPlant == true)
         {
-            document.getElementById(plant_id).style.backgroundColor = color; 
-            document.getElementById(plant_id).innerHTML = time;
+            document.getElementById(plant_id).style.backgroundImage = "url('" +  plantName + "')";
+            //document.getElementById(plant_id).innerText = time; this this is useless
             playerPoints = playerPoints + givePoints;
             planting(time, plant_id);
         }
