@@ -44,14 +44,33 @@
         width: 100%;
         height: 100%;
     }
+    #carrotButton
+    {
+        background-image: url(carrot.png);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        color: transparent;
+        width: 50px;
+        height: 50px;
+    }
+    #strawberryButton
+    {
+        background-image: url(strawberry.png);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        color: transparent;
+        width: 50px;
+        height: 50px;
+    }
+
 </style>
 
 <body onload="gardenBoard();">
     <h1 style="text-align: center; color: green;">Grow your garden beautifully!</h1>
     <h3 id="points">Points: </h3>
   <div id="menu">
-      <button onclick="carrot();" style="background-color: orange;">Plant carrot</button>
-      <button onclick="strawberry();" style="background-color: red;">Plant strawberry</button>
+      <button id="carrotButton" onclick="carrot();"">Plant carrot</button>
+      <button id="strawberryButton" onclick="strawberry();">Plant strawberry</button>
   </div>  
 
   <div id="gardenBoard">
@@ -69,14 +88,14 @@
     function carrot()
     {
         canPlant = true;
-        plantName = "carrot.png";
+        plantPhoto = "carrot.png";
         time = 3;
         givePoints = 1;
     }
     function strawberry()
     {
         canPlant = true;
-        plantName = "strawberry.png";
+        plantPhoto = "strawberry.png";
         time = 5;
         givePoints = 5;
     }
@@ -106,7 +125,8 @@
     {
         if(document.getElementById(plant_id).innerText == 'Collect!')
         {
-            document.getElementById("points").innerText = "Points: " + playerPoints;
+            document.getElementById("points").innerText = "Points: " + (playerPoints + givePoints);
+            playerPoints = playerPoints + givePoints;
             document.getElementById(plant_id).innerText = "Dirt";
             document.getElementById(plant_id).style.backgroundImage = "url('grass.png')";
         }
@@ -117,9 +137,8 @@
         }
         else if(canPlant == true)
         {
-            document.getElementById(plant_id).style.backgroundImage = "url('" +  plantName + "')";
+            document.getElementById(plant_id).style.backgroundImage = "url('" +  plantPhoto + "')";
             //document.getElementById(plant_id).innerText = time; this this is useless
-            playerPoints = playerPoints + givePoints;
             planting(time, plant_id);
         }
         
