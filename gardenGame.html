@@ -70,14 +70,14 @@
     {
         canPlant = true;
         plantName = "carrot.png";
-        time = 5;
+        time = 3;
         givePoints = 1;
     }
     function strawberry()
     {
         canPlant = true;
         plantName = "strawberry.png";
-        time = 10;
+        time = 5;
         givePoints = 5;
     }
 
@@ -129,10 +129,12 @@
     {
         var countdown = setInterval(function() 
         {
+            document.getElementById(place).style.color = "white";
             seconds--;
             document.getElementById(place).textContent = seconds;
             if (seconds <= 0) clearInterval(countdown);
             if(seconds == 0 ) document.getElementById(place).style.backgroundImage = "url('coin.png')";
+            if(seconds == 0 ) document.getElementById(place).style.color = "transparent";
             if(seconds == 0 ) document.getElementById(place).innerText = "Collect!";
         }, 1000); 
     }
