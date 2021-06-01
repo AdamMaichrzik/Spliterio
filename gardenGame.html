@@ -1,0 +1,116 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden game! :) </title>
+    
+</head>
+
+<style>
+    #menu
+    {
+        text-align: center;
+    }
+    #gardenBoard
+    {
+        width: 500px;
+        height: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+    }
+    .buttonBox
+    {
+        width: 50px;
+        height: 50px;
+        background-color: burlywood;
+        border: 1px solid black;
+        border: none;
+        outline: 0;
+        margin:0;
+
+    }
+</style>
+
+<body onload="gardenBoard();">
+    <h1 style="text-align: center; color: green;">Grow your garden beautifully!</h1>
+    <h3 id="points">Points: </h3>
+  <div id="menu">
+      <button onclick="carrot();" style="background-color: orange;">Plant carrot</button>
+      <button onclick="strawberry();" style="background-color: red;">Plant strawberry</button>
+  </div>  
+
+  <div id="gardenBoard">
+
+  </div>
+  <span id="time">10</span>
+
+<script>
+
+    let color;
+    let time;
+    let playerPoints = 100;
+    canPlant = new Boolean(false);
+    function carrot()
+    {
+        canPlant = true;
+        color = "orange";
+        time = 5;
+        givePoints = 1;
+    }
+    function strawberry()
+    {
+        canPlant = true;
+        color = "red";
+        time = 10;
+        givePoints = 5;
+    }
+
+    function gardenBoard()
+    {
+        for(let i = 0; i <100; i++)
+        {
+            document.getElementById("gardenBoard").innerHTML = document.getElementById("gardenBoard").innerHTML + "<button id='" + i + "' onclick='plant(this.id)' class='buttonBox'>Dirt</button>";
+        }
+        for(let i = 0; i < 10;i++)
+        {
+            let createStone = Math.floor(Math.random() * 100) + 1;
+            document.getElementById(createStone).innerHTML = "Stone";
+            document.getElementById(createStone).style.backgroundColor = "Gray";
+
+            let createTree = Math.floor(Math.random() * 100) + 1;
+            document.getElementById(createTree).innerHTML = "Tree";
+            document.getElementById(createTree).style.backgroundColor = "Green";
+        }
+    }
+
+    function plant(plant_id)
+    {
+        /* You can't plant if something is already planted */
+        if(document.getElementById(plant_id).innerHTML != "Dirt")
+        {
+            alert("You can't plant here!")
+        }
+        else if(canPlant == true)
+        {
+            document.getElementById(plant_id).style.backgroundColor = color; 
+            document.getElementById(plant_id).innerHTML = time;
+            planting(time, plant_id);
+        }
+    }
+    
+    function planting(seconds, place)
+    {
+        var countdown = setInterval(function() 
+        {
+            seconds--;
+            document.getElementById(place).textContent = seconds;
+            if (seconds <= 0) clearInterval(countdown);
+            if(seconds == 0 ) document.getElementById("points").innerText = "Points: " + (playerPoints + givePoints);
+        }, 1000); 
+    }
+
+</script>
+</body>
+</html>
